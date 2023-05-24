@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/class_1_make_simple_game" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/dart_basic_" vcs="Git" />
   </component>
