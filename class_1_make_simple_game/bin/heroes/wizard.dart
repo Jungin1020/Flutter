@@ -53,8 +53,9 @@ void main() {
   print(
       "Wizard's name : ${wizard3.name}, HP : ${wizard3.hp}, MP : ${wizard3.mp}");
 
-  // 질문 : getter와 setter가 같이 있으니까 name, _name이 전부 수정 가능합니다.
-  // 캡슐화를 하려면 getter만 있어야?? >> setter를 지웠는데도 _name 수정 가능합니다.
+  // getter와 setter가 같이 있으니까 name, _name이 전부 수정 가능합니다.
+  // 캡슐화를 하려면 getter만 있어야 할까요??
+  // setter를 지우면 _name은 수정 가능하지만 name은 컴파일에러가 납니다.
   Wizard wizard = Wizard('DDD', wand2, hp: 23, mp: 5);
   wizard._name = 'AAA';
   print(wizard._name);
