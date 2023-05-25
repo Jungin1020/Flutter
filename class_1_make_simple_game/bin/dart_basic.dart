@@ -21,10 +21,10 @@ void main() {
   hero1.sword = sword;
 
   // primary constructor 기본 생성자
-  final slime = Slime();
+  final slime = Slime('A');
 
   print(Hero.money);
 
-  hero.attack();
-  hero.sleep();
+  // hero.attack();
+  // hero.sleep();
 }

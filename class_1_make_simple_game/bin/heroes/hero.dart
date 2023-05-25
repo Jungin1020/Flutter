@@ -4,20 +4,22 @@ class Hero {
   // field
   static int money = 100; // 정적 자금이 된다. 모든 히어로가 공유, 인스턴스 안 만들어도 시용됨, 정적 변수
   String name;
-  int _hp;
+  // int _hp;
+  int hp;
   Sword? sword; // 칼이 있을 수도 없을 수도
 
-  int get hp => _hp;
-
-  set hp(int value) {
-    if (value < 0) {
-      throw Exception('안돼');
-    }
-  }
+  // int get hp => _hp;
+  //
+  // set hp(int value) {
+  //   if (value < 0) {
+  //     throw Exception('안돼');
+  //   }
+  // }
 
   // 생성자, 필드와 메서드 사이
   // Hero({required this.name, required this.hp, this.sword});
-  Hero(this.name, this._hp, {this.sword}); //둘 중 하나
+  // Hero(this.name, this._hp, {this.sword}); //둘 중 하나
+  Hero(this.name, this.hp, {this.sword}); //둘 중 하나
 
   // 클래스 안에 작성한 람수 = 메서드
   void attack() {
@@ -29,7 +31,9 @@ class Hero {
     }
   }
 
-  void run() {}
+  void run() {
+    print('$name is running!');
+  }
 
   void sleep() {
     hp = 100;
