@@ -11,7 +11,7 @@ class PoisonSlime extends Slime {
     print('$suffix슬라임이 공격했다!');
     print('10의 데미지');
     hero.hp -= 10;
-    // // 여기까지가 오버라이딩 전 attack인데 하드코딩 안하고 가져오는 방법은 없을까요?
+    // // 여기까지가 그냥 슬라임 attack과 똑같은데 하드코딩 안하고 가져오는 방법은 없을까요?
 
     if (poisonLeft > 0) {
       print('추가로, 독 포자를 살포했다!');
