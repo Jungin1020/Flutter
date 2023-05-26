@@ -14,6 +14,7 @@ class Hero {
   //   if (value < 0) {
   //     throw Exception('안돼');
   //   }
+  // _hp = value;
   // }
 
   // 생성자, 필드와 메서드 사이
