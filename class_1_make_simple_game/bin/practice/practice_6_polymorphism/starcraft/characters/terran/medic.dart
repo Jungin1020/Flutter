@@ -1,5 +1,5 @@
+import '../../skills/healable.dart';
 import '../units/bio_unit.dart';
-import '../skills/healable.dart';
 import 'terran.dart';
 
 class Medic extends Terran implements BioUnit, Healable {

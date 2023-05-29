@@ -1,4 +1,4 @@
-import '../units/bio_unit.dart';
+import '../characters/units/bio_unit.dart';
 
 abstract interface class Groupable {
   void makeGroup(BioUnit value);
