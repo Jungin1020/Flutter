@@ -6,7 +6,7 @@ class Scv extends Terran implements MechUnit, Fixable {
   Scv(super.name, super.hp);
 
   @override
-  void fixMechanic() {
+  void fixMechanic(MechUnit value) {
     // TODO: implement fixMechanic
   }
 }
