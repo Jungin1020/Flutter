@@ -41,4 +41,6 @@ void main() {
   hero.run();
   final batman = SuperHero('Batman', 100);
   batman.run();
+
+  dynamic num = 1;
 }
