@@ -50,4 +50,25 @@ void main() {
   final book6 = book1.copyWith();
 
   print('book1: ${book1.hashCode}, book6: ${book6.hashCode}'); // 같은 해시코드
+
+  final books = [book3, book4, book5];
+
+  // 방법 1
+  books.sort((a, b) => a.title.compareTo(b.title));
+
+  // 방법 2
+  books.sort((a, b) => Comparable.compare(a.title, b.title));
+
+  // 방법 3
+  books.sort(compareBook);
+
+  books.forEach((element) {
+    print(element.title);
+  });
+}
+
+int compareBook(Book b1, Book b2) {
+  return b1.title.compareTo(b2);
+  // 에러가 나네용...?
+  // https://www.notion.so/18977d8cd34c436c8b38061d863b48da?v=6660cc95b1b449f0a10f3b4c15bd86c0&p=ff18327a4bc64ce0a4930fb42d0861c9&pm=s
 }
