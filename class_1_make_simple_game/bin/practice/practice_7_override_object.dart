@@ -1,6 +1,6 @@
 class Book {
-  final title;
-  final comment;
+  final String title;
+  final String comment;
 
   // final DateTime publishDate = DateTime.now();
   final String publishDate = '2023.05.30';
@@ -68,7 +68,7 @@ void main() {
 }
 
 int compareBook(Book b1, Book b2) {
-  return b1.title.compareTo(b2);
+  return b1.title.compareTo(b2.title);
   // 에러가 나네용...?
   // https://www.notion.so/18977d8cd34c436c8b38061d863b48da?v=6660cc95b1b449f0a10f3b4c15bd86c0&p=ff18327a4bc64ce0a4930fb42d0861c9&pm=s
 }
