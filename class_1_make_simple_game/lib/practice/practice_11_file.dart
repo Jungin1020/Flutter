@@ -5,8 +5,8 @@ void copy(String source, String target) {
 }
 
 void main() {
-  String source = '길동이.json';
-  String target = '길동이2.json';
+  String source = 'lib/practice/ect/길동이.json';
+  String target = 'lib/practice/ect/길동이_copy.json';
 
   copy(source, target);
 }

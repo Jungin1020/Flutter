@@ -30,7 +30,7 @@ void main() {
   Department department = Department('총무부', employee);
 
   final departJson = jsonEncode(department.toJson());
-  final myJson = File('department.json');
+  final myJson = File('lib/practice/ect/길동이.json');
 
   myJson.writeAsStringSync(departJson);
 
