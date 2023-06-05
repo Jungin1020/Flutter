@@ -7,6 +7,10 @@ class Employee {
 
   Employee(this.name, this.age);
 
+  Employee.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        age = json['age'];
+
   Map<String, dynamic> toJson() => {
         'name': name,
         'age': age,
@@ -17,12 +21,16 @@ class Department {
   String name;
   Employee leader;
 
+  Department(this.name, this.leader);
+
+  Department.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        leader = Employee.fromJson(json['leader']);
+
   Map<String, dynamic> toJson() => {
         'name': name,
         'leader': leader.toJson(),
       };
-
-  Department(this.name, this.leader);
 }
 
 void main() {
@@ -37,7 +45,9 @@ void main() {
   print('직렬화: $departJson');
 
   Map<String, dynamic> departMap = jsonDecode(departJson);
+  Department department2 = Department.fromJson(departMap);
 
-  print('역직렬화: $departMap');
-  print(departMap['name']);
+  print('역직렬화: $department2');
+  print(department2.name);
+  print(department2.leader.name);
 }
