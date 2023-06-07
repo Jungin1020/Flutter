@@ -34,7 +34,8 @@ class CollectionData {
 
   CollectionData.fromJson(Map<String, dynamic> json)
       : collectionName = json['collectionName'],
-        collectionSalePrice = json['collectionSalePrice'];
+        collectionSalePrice = SalePrice.fromJson(json['collectionSalePrice']);
+  // The initializer type 'SalePrice' can't be assigned to the field type 'List<Map<String, dynamic>>'.
 }
 
 class SalePrice {
