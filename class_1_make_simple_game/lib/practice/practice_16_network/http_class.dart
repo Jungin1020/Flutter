@@ -19,6 +19,8 @@ Future<Map<String, dynamic>> getTodo(int id) async {
   // print(json);
 }
 
+// map list를 파싱하는 코드, 선생밈 코드 참고
+
 Future<http.Response> getHtml(String url) async {
   return await http.get(Uri.parse(url));
 }
