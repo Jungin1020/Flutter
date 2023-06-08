@@ -5,6 +5,9 @@ import 'package:http/http.dart' as http;
 
 void main() async {
   print(await getTodo(1));
+
+  final response = await getHtml('https://www.google.co.kr/');
+  print(response.body);
 }
 
 Future<Map<String, dynamic>> getTodo(int id) async {
@@ -14,4 +17,8 @@ Future<Map<String, dynamic>> getTodo(int id) async {
   return jsonDecode(response.body);
 
   // print(json);
+}
+
+Future<http.Response> getHtml(String url) async {
+  return await http.get(Uri.parse(url));
 }
