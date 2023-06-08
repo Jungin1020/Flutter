@@ -18,15 +18,25 @@ void main() async {
   final movieDetail = await getMovieDetails(840326);
   final String movieDetailJson = jsonEncode(movieDetail.toJson());
 
-  print(movieDetailJson);
+  // print(movieDetailJson);
 
-  // 연습문제 3 & 연습문제 5
+  // 연습문제 3 & 4 & 5
 
   final String imageUrl = 'https://alimipro.com/favicon.ico';
   final String fallbackImageUrl = 'https://alimipro.com/assets/ios_capture.png';
 
+  print('다운로드 시작');
+
+  Stopwatch stopwatch = Stopwatch()..start();
   final Uint8List imageData = await downloadImage(imageUrl, fallbackImageUrl);
-  final File imagePath = await saveFile(imageData, 'favicon_copy.ico');
+  stopwatch.stop();
+
+  print('다운로드 끝');
+  print('================');
+  print('소요시간 : ${stopwatch.elapsed}');
+  print('용량 : ${imageData.lengthInBytes}');
+
+  final File imagePath = await saveFile(imageData, 'favicon_copy.png');
   // 타겟 url을 틀리게 만들고 대체 이미지를 저장했는데 보이질 않는다. 안드로이드 스튜디오에선 안보이는 건가?
 }
 
