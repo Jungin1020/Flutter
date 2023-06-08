@@ -20,11 +20,14 @@ void main() async {
 
   print(movieDetailJson);
 
-  // 연습문제 3
+  // 연습문제 3 & 연습문제 5
 
   final String imageUrl = 'https://alimipro.com/favicon.ico';
-  final Uint8List imageData = await downloadImage(imageUrl);
+  final String fallbackImageUrl = 'https://alimipro.com/assets/ios_capture.png';
+
+  final Uint8List imageData = await downloadImage(imageUrl, fallbackImageUrl);
   final File imagePath = await saveFile(imageData, 'favicon_copy.ico');
+  // 타겟 url을 틀리게 만들고 대체 이미지를 저장했는데 보이질 않는다. 안드로이드 스튜디오에선 안보이는 건가?
 }
 
 // 연습문제 1
@@ -45,16 +48,18 @@ Future<MovieDetail> getMovieDetails(int movieId) async {
   return MovieDetail.fromJson(jsonMap);
 }
 
-// 연습문제 3
-Future<Uint8List> downloadImage(String url) async {
-  // final String imageUrl = 'https://alimipro.com/favicon.ico';
+// 연습문제 3 & 연습문제 5
+Future<Uint8List> downloadImage(String url, String fallbackUrl) async {
   final response = await http.get(Uri.parse(url));
 
   if (response.statusCode == 200) {
     final imageData = response.bodyBytes;
     return Uint8List.fromList(imageData);
   } else {
-    throw Exception('이미지 가져오기 실패. 상태 코드: $response');
+    final fallbackResponse = await http.get(Uri.parse(fallbackUrl));
+    final fallbackImageData = fallbackResponse.bodyBytes;
+    return Uint8List.fromList(fallbackImageData);
+    // throw Exception('이미지 가져오기 실패. 상태 코드: $response');
   }
 }
 
