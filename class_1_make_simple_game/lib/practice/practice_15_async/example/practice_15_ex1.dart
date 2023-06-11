@@ -1,26 +1,22 @@
-// import 'dart:io';
-// // import 'package:csv/csv.dart';
-//
-// // sample.csv 를 불러온다
-// // 파일이 없으면 예외처리한다
-// Future<String> readCsv() async {
-//   try {
-//     final file = File('lib/practice/practice_15_async/sample.csv');
-//     print(file.readAsLines());
-//
-//     return '';
-//     // return CsvToListConverter().convert(lines.join('\n'));
-//   } catch (e) {
-//     return 'An error occurred while reading the file: $e';
-//   }
-// }
-//
-// Future<void> main() async {
-//   final String a = await readCsv();
-//   print(a);
-// }
+import 'dart:io';
 
-// '한석봉' 이라는 문자열이 있는지 찾고
-// true 이면 '김석봉'으로 수정
-// sample_copy.csv 로 저장한다
-// async await 사용
+Future<void> findAndReplace(
+    String source, String target, String find, String replace) async {
+  // 파일에서 문자열을 읽습니다.
+  final sourceText = await File(source).readAsString();
+  // sourceText에서 find문자를 replace문자로 바꿉니다.
+  final targetText = sourceText.replaceAll(find, replace);
+  // targetText 값을 받아서 target에 씁니다.
+  File(target).writeAsString(targetText);
+}
+
+Future<void> main() async {
+  await findAndReplace('lib/practice/practice_15_async/sample22.csv',
+          'lib/practice/practice_15_async/sample2.csv', '한석봉', '김석봉')
+      .catchError((error) {
+    print(error);
+  });
+
+  print(
+      await File('lib/practice/practice_15_async/sample2.csv').readAsString());
+}
