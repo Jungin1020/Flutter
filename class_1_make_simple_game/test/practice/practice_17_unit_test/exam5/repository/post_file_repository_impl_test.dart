@@ -1,10 +1,10 @@
 import 'package:dart_basic/practice/practice_17_unit_test/exam5/model/post.dart';
-import 'package:dart_basic/practice/practice_17_unit_test/exam5/repository/post_memory_repository_impl.dart';
+import 'package:dart_basic/practice/practice_17_unit_test/exam5/repository/post_file_repository_impl.dart';
 import 'package:dart_basic/practice/practice_17_unit_test/exam5/repository/post_repository.dart';
 import 'package:test/test.dart';
 
 void main() {
-  PostRepository _repository = PostMemoryRepositoryImpl();
+  PostRepository _repository = PostFileRepositoryImpl();
 
   setUp(() async {
     _repository.addPost(Post(id: 0, title: 'test1', body: 'test1'));
@@ -12,13 +12,16 @@ void main() {
   });
 
   tearDown(() async {
-    _repository = PostMemoryRepositoryImpl();
+    _repository = PostFileRepositoryImpl();
   });
 
   group('PostRepository', () {
     test('getPosts()', () async {
       final posts = await _repository.getPosts();
       expect(posts.length, 2);
+
+      print('getPosts()');
+      print(posts.toString());
     });
 
     test('addPost()', () async {
@@ -31,12 +34,22 @@ void main() {
 
       posts = await _repository.getPosts();
       expect(posts.length, 4);
+
+      print('-------------------------');
+
+      print('addPost()');
+      print(posts.toString());
     });
 
     test('updatePost()', () async {
       await _repository.updatePost(Post(id: 0, title: '0', body: '0'));
       final firstPost = (await _repository.getPosts())[0];
       expect(firstPost.title, '0');
+
+      print('-------------------------');
+
+      print('updatePost()');
+      print((await _repository.getPosts()).toString());
     });
 
     test('deletePost()', () async {
@@ -44,12 +57,17 @@ void main() {
       await _repository.deletePost(post);
       final posts = await _repository.getPosts();
       expect(posts.length, 1);
+
+      print('-------------------------');
+
+      print('deletePost()');
+      print(posts.toString());
     });
   });
 
   test('PostMemoryRepository 테스트', () async {
     // 준비
-    final PostRepository repository = PostMemoryRepositoryImpl();
+    final PostRepository repository = PostFileRepositoryImpl();
 
     final posts = await repository.getPosts();
     expect(posts.length, 0);

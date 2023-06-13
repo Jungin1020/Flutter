@@ -10,53 +10,48 @@ class PostFileRepositoryImpl implements PostRepository {
   @override
   Future<void> addPost(Post post) async {
     // final Map<String, dynamic> postJson2 = post.toJson();
-    final Map<String, dynamic> postJson = post.toJson();
+    final Map<String, dynamic> postMap = post.toJson();
 
     // 데이터 리스트에 추가
-    _posts.add(postJson);
+    _posts.add(postMap);
 
-    // // Json으로 저장
-    // File file = File('post.json');
-    // file.writeAsString(postJson);
+    await savePost();
   }
 
   @override
   Future<void> deletePost(Post post) async {
-    final Map<String, dynamic> postJson = post.toJson();
-    _posts.where((p) => p['id'] != post.id).toList();
+    final Map<String, dynamic> postMap = post.toJson();
 
-    // _posts.remove(post);
+    // deletePost 인자로 들어온 데이터와 id 가 다른 데이터만 남겨놓는다.
+    _posts = _posts.where((p) => p['id'] != postMap['id']).toList();
+
+    await savePost();
   }
 
   @override
-  Future<List<Map<String, dynamic>>> getPosts() async {
-    return _posts;
+  Future<List<Post>> getPosts() async {
+    return _posts.map((e) => Post.fromJson(e)).toList();
   }
 
   @override
   Future<void> updatePost(Post post) async {
-    // _posts = _posts.map((e) {
-    //   if (e.id == post.id) {
-    //     return post;
-    //   }
-    //   return e;
-    // }).toList();
-
-    final Map<String, dynamic> postJson = post.toJson();
+    final Map<String, dynamic> postMap = post.toJson();
 
     _posts = _posts.map((e) {
-      if (e['id'] == postJson['id']) {
-        return postJson;
+      if (e['id'] == postMap['id']) {
+        return postMap;
       }
       return e;
     }).toList();
+
+    await savePost();
   }
 
   // @override
   Future<void> savePost() async {
-    final String postJson = jsonEncode(_posts);
+    final String postMap = jsonEncode(_posts);
 
-    File file = File('post.json');
-    file.writeAsString(postJson);
+    File file = File('lib/practice/practice_17_unit_test/exam5/data/post.json');
+    file.writeAsString(postMap);
   }
 }

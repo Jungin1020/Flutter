@@ -14,10 +14,10 @@ class PostMemoryRepositoryImpl implements PostRepository {
     _posts.remove(post);
   }
 
-  // @override
-  // Future<List<Post>> getPosts() async {
-  //   return _posts;
-  // }
+  @override
+  Future<List<Post>> getPosts() async {
+    return _posts;
+  }
 
   @override
   Future<void> updatePost(Post post) async {
@@ -27,11 +27,5 @@ class PostMemoryRepositoryImpl implements PostRepository {
       }
       return e;
     }).toList();
-  }
-
-  @override
-  Future<List<Map<String, dynamic>>> getPosts() {
-    // TODO: implement getPosts
-    throw UnimplementedError();
   }
 }

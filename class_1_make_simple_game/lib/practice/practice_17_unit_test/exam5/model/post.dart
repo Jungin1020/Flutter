@@ -30,4 +30,9 @@ class Post {
     map['body'] = body;
     return map;
   }
+
+  @override
+  String toString() {
+    return 'Post{id: $id, title: $title, body: $body}';
+  }
 }
